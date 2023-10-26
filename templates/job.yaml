@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: oc-mirror-{{ .Values.name }}-{{ .Values.version }}
+  namespace: {{ .Values.namespace }}
+spec:
+  template:
+    spec:
+      containers:
+      - name: ose-cli
+        image: {{ .Values.image }}
+        command:
+          - "/bin/sh"
+          - "-c"
+          - |
+            wget {{ .Values.ocMirror }}
+            tar xvzf oc-mirror.tar.gz
+            chmod +x oc-mirror
+            ./oc mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ .Values.image }}/paas-{{ .Values.name }} --dest-skip-tls=true
+        volumeMounts:
+        - name: imageset-config
+          mountPath: /tmp/config
+        - name: docker-config
+          mountPath: /root/.docker/
+      restartPolicy: Never
+      volumes:
+      - name: imageset-config
+        configMap:
+          name: imagesetconfiguration
+      - name: docker-config
+        secret:
+          secretName: oc-mirror-pull-secret

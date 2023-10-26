@@ -1,0 +1,25 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oc-mirror-{{ .Values.name }}-{{ .Values.version }}
+  namespace: {{ .Values.namespace }}
+data:
+  imagesetconfiguration.yaml: |
+    kind: ImageSetConfiguration
+    apiVersion: mirror.openshift.io/v1alpha2
+    storageConfig:
+      registry:
+        imageURL: "{{ .Values.registry }}/paas-{{ .Values.name }}/metadata"
+        skipTLS: true
+    mirror:
+      operators:
+      - catalog: "{{ .Values.catalog }}"
+        packages:
+        {{- range $package, $values := .Values.packages }}
+        - name: {{ $package }}
+          channels:
+          - name: {{ $values.channel }}
+            minVersion: {{ $values.version }}
+            maxVersion: {{ $values.version }}
+        {{- end }}
