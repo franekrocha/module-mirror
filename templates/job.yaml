@@ -9,6 +9,8 @@ spec:
       containers:
       - name: ose-cli
         image: {{ .Values.image }}
+        securityContext:
+          runAsUser: 0
         command:
           - "/bin/sh"
           - "-c"
@@ -17,7 +19,7 @@ spec:
             wget {{ .Values.ocMirror }}
             tar xvzf oc-mirror.tar.gz
             chmod +x oc-mirror
-            ./oc mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ .Values.image }}/paas-{{ .Values.name }} --dest-skip-tls=true
+            ./oc mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ .Values.repository }}/paas-{{ .Values.name }}-{{ .Values.version }} --dest-skip-tls=true
         volumeMounts:
         - name: imageset-config
           mountPath: /tmp/config
