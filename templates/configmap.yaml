@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: oc-mirror-{{ .Values.name }}-{{ .Values.version }}
+  name: imagesetconfiguration-{{ .Values.name }}-{{ .Values.version }}
   namespace: {{ .Values.namespace }}
 data:
   imagesetconfiguration.yaml: |
@@ -10,7 +10,7 @@ data:
     apiVersion: mirror.openshift.io/v1alpha2
     storageConfig:
       registry:
-        imageURL: "{{ .Values.registry }}/paas-{{ .Values.name }}/metadata"
+        imageURL: "{{ .Values.repository }}/paas-{{ .Values.name }}-{{ .Values.version }}/metadata"
         skipTLS: true
     mirror:
       operators:
