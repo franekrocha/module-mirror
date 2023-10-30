@@ -10,7 +10,7 @@ data:
     apiVersion: mirror.openshift.io/v1alpha2
     storageConfig:
       registry:
-        imageURL: "{{ .Values.repository }}/paas-{{ .Values.name }}-{{ .Values.version }}/metadata"
+        imageURL: "docker://{{ .Values.repository }}/paas-{{ .Values.name }}-{{ .Values.version }}/metadata"
         skipTLS: true
     mirror:
       operators:
