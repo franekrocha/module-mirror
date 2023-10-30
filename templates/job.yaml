@@ -8,6 +8,7 @@ metadata:
 spec:
   template:
     spec:
+      serviceAccountName: oc-mirror-{{ .Values.name }}-{{ .Values.version }}
       containers:
       - name: ose-cli
         image: {{ .Values.image }}
