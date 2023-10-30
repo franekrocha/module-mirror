@@ -13,6 +13,7 @@ spec:
           - "/bin/sh"
           - "-c"
           - |
+            cd /root
             wget {{ .Values.ocMirror }}
             tar xvzf oc-mirror.tar.gz
             chmod +x oc-mirror
