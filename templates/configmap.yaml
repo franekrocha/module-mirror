@@ -12,7 +12,7 @@ data:
     apiVersion: mirror.openshift.io/v1alpha2
     storageConfig:
       registry:
-        imageURL: "{{ $.Values.repository }}/{{ $.Values.projectKey }}-{{ $.Values.name }}-{{ $.Values.version }}/metadata"
+        imageURL: "{{ $.Values.repository }}/{{ $.Values.key }}-{{ $.Values.name }}-{{ $.Values.version }}/metadata"
         skipTLS: true
     mirror:
       operators:
