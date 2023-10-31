@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-30"
-  name: {{ .Values.namespace }}
+  name: {{ $.Values.namespace }}

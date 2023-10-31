@@ -1,14 +1,16 @@
+{{- range $key, $val := $.Values.repositories }}
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-26"
-  name: oc-mirror-{{ $.Values.name }}-{{ $.Values.version }}
+  name: oc-mirror-{{ $key }}
   namespace: {{ $.Values.namespace }}
 spec:
   template:
     spec:
-      serviceAccountName: oc-mirror-{{ $.Values.name }}-{{ $.Values.version }}
+      serviceAccountName: oc-mirror
       containers:
       - name: ose-cli
         image: {{ $.Values.image }}
@@ -22,7 +24,7 @@ spec:
             wget {{ $.Values.ocMirror }}
             tar xvzf oc-mirror.tar.gz
             chmod +x oc-mirror
-            ./oc-mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ $.Values.repository }}/{{ $.Values.key }}-{{ $.Values.name }}-{{ $.Values.version }} --dest-skip-tls=true
+            ./oc-mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ $.Values.repository }}/{{ $key }} --dest-skip-tls=true
             oc create -f oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml
             oc create -f oc-mirror-workspace/results-*/catalogSource-redhat-operator-index.yaml
         volumeMounts:
@@ -34,7 +36,8 @@ spec:
       volumes:
       - name: imageset-config
         configMap:
-          name: imagesetconfiguration-{{ $.Values.name }}-{{ $.Values.version }}
+          name: oc-mirror-{{ $key }}
       - name: docker-config
         secret:
-          secretName: pullsecret-{{ $.Values.name }}-{{ $.Values.version }}
+          secretName: pullsecret
+{{- end }}

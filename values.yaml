@@ -1,20 +1,38 @@
-namespace: paas-oc-mirror
+namespace: paas-mirror
+
 image: registry.redhat.io/openshift4/ose-cli:v4.12
-catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
 ocMirror: https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/oc-mirror.tar.gz
+
 repository: artifactory.apps.workshops.sandbox458.opentlc.com
 
-key: redhat
-name: servicemesh
-version: v2.4.4
-
-packages:
-  servicemeshoperator:
-    channel: stable
-    version: v2.4.4
-  kiali-ossm:
-    channel: stable
-    version: v1.65.9
-  jaeger-product:
-    channel: stable
-    version: v1.47.0
+repositories:
+  paas-servicemesh-v2.2.3:
+    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.10
+    packages:
+      servicemeshoperator:
+        channel: stable
+        version: v2.2.3
+      kiali-ossm:
+        channel: stable
+        version: v1.48.3
+      jaeger-product:
+        channel: stable
+        version: v1.36.0
+  paas-servicemesh-v2.4.4:
+    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
+    packages:
+      servicemeshoperator:
+        channel: stable
+        version: v2.4.4
+      kiali-ossm:
+        channel: stable
+        version: v1.65.9
+      jaeger-product:
+        channel: stable
+        version: v1.47.0
+  paas-gitops-v1.10.0:
+    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
+    packages:
+      openshift-gitops-operator:
+        channel: gitops-1.8
+        version: v1.8.3
