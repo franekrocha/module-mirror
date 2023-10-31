@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "-26"
   name: oc-mirror-{{ $.Values.name }}-{{ $.Values.version }}
   namespace: {{ $.Values.namespace }}
 spec:
