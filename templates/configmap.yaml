@@ -19,7 +19,7 @@ data:
       operators:
       - catalog: "{{ $val.catalog }}"
         packages:
-        {{- range $package, $values := $val. }}
+        {{- range $package, $values := $val.packages }}
         - name: {{ $package }}
           channels:
           - name: {{ $values.channel }}
