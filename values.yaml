@@ -6,18 +6,6 @@ ocMirror: https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stabl
 repository: artifactory.apps.workshops.sandbox458.opentlc.com
 
 repositories:
-  paas-servicemesh-v2.2.3:
-    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.10
-    packages:
-      servicemeshoperator:
-        channel: stable
-        version: v2.2.3
-      kiali-ossm:
-        channel: stable
-        version: v1.48.3
-      jaeger-product:
-        channel: stable
-        version: v1.36.0
   paas-servicemesh-v2.4.4:
     catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
     packages:
@@ -30,9 +18,21 @@ repositories:
       jaeger-product:
         channel: stable
         version: v1.47.0
-  paas-gitops-v1.10.0:
-    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
-    packages:
-      openshift-gitops-operator:
-        channel: latest
-        version: v1.10.0
+#  paas-servicemesh-v2.2.3:
+#    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.10
+#    packages:
+#      servicemeshoperator:
+#        channel: stable
+#        version: v2.2.3
+#      kiali-ossm:
+#        channel: stable
+#        version: v1.48.3
+#      jaeger-product:
+#        channel: stable
+#        version: v1.36.0
+#  paas-gitops-v1.10.0:
+#    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
+#    packages:
+#      openshift-gitops-operator:
+#        channel: latest
+#        version: v1.10.0
