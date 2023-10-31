@@ -1,13 +1,29 @@
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-28"
-  name: oc-mirror-{{ .Values.name }}-{{ .Values.version }}
+  name: anyuid-{{ .Values.name }}-{{ .Values.version }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: system:openshift:scc:anyuid
+subjects:
+- kind: ServiceAccount
+  name: oc-mirror-{{ .Values.name }}-{{ .Values.version }}
+  namespace: {{ .Values.namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-28"
+  name: cluster-admin-{{ .Values.name }}-{{ .Values.version }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
 subjects:
 - kind: ServiceAccount
   name: oc-mirror-{{ .Values.name }}-{{ .Values.version }}
