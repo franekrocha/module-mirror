@@ -4,19 +4,19 @@ kind: ConfigMap
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-27"
-  name: imagesetconfiguration-{{ .Values.name }}-{{ .Values.version }}
-  namespace: {{ .Values.namespace }}
+  name: imagesetconfiguration-{{ $.Values.name }}-{{ $.Values.version }}
+  namespace: {{ $.Values.namespace }}
 data:
   imagesetconfiguration.yaml: |
     kind: ImageSetConfiguration
     apiVersion: mirror.openshift.io/v1alpha2
     storageConfig:
       registry:
-        imageURL: "{{ .Values.repository }}/paas-{{ .Values.name }}-{{ .Values.version }}/metadata"
+        imageURL: "{{ $.Values.repository }}/{{ $.Values.projectKey }}-{{ $.Values.name }}-{{ $.Values.version }}/metadata"
         skipTLS: true
     mirror:
       operators:
-      - catalog: "{{ .Values.catalog }}"
+      - catalog: "{{ $.Values.catalog }}"
         packages:
         {{- range $package, $values := .Values.packages }}
         - name: {{ $package }}

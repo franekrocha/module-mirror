@@ -3,15 +3,15 @@ kind: Job
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-26"
-  name: oc-mirror-{{ .Values.name }}-{{ .Values.version }}
-  namespace: {{ .Values.namespace }}
+  name: oc-mirror-{{ $.Values.name }}-{{ $.Values.version }}
+  namespace: {{ $.Values.namespace }}
 spec:
   template:
     spec:
-      serviceAccountName: oc-mirror-{{ .Values.name }}-{{ .Values.version }}
+      serviceAccountName: oc-mirror-{{ $.Values.name }}-{{ $.Values.version }}
       containers:
       - name: ose-cli
-        image: {{ .Values.image }}
+        image: {{ $.Values.image }}
         securityContext:
           runAsUser: 0
         command:
@@ -19,10 +19,10 @@ spec:
           - "-c"
           - |
             cd /root
-            wget {{ .Values.ocMirror }}
+            wget {{ $.Values.ocMirror }}
             tar xvzf oc-mirror.tar.gz
             chmod +x oc-mirror
-            ./oc-mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ .Values.repository }}/paas-{{ .Values.name }}-{{ .Values.version }} --dest-skip-tls=true
+            ./oc-mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ $.Values.repository }}/{{ $.Values.projectKey }}-{{ $.Values.name }}-{{ $.Values.version }} --dest-skip-tls=true
         volumeMounts:
         - name: imageset-config
           mountPath: /tmp/config
@@ -32,7 +32,7 @@ spec:
       volumes:
       - name: imageset-config
         configMap:
-          name: imagesetconfiguration-{{ .Values.name }}-{{ .Values.version }}
+          name: imagesetconfiguration-{{ $.Values.name }}-{{ $.Values.version }}
       - name: docker-config
         secret:
-          secretName: pullsecret-{{ .Values.name }}-{{ .Values.version }}
+          secretName: pullsecret-{{ $.Values.name }}-{{ $.Values.version }}
