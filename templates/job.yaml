@@ -25,8 +25,10 @@ spec:
             tar xvzf oc-mirror.tar.gz
             chmod +x oc-mirror
             ./oc-mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ $.Values.repository }}/{{ $key }} --dest-skip-tls=true
-            oc create -f oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml
-            oc create -f oc-mirror-workspace/results-*/catalogSource-redhat-operator-index.yaml
+            sed -i "s/name: operator-0/name: {{ $key }}/g" oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml
+            sed -i "s/name: redhat-operator-index/name: {{ $key }}/g" oc-mirror-workspace/results-*/catalogSource-redhat-operator-index.yaml
+            oc apply -f oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml
+            oc apply -f oc-mirror-workspace/results-*/catalogSource-redhat-operator-index.yaml
         volumeMounts:
         - name: imageset-config
           mountPath: /tmp/config
