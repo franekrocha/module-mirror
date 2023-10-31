@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-26"
+    argocd.argoproj.io/hook: PostSync
   name: oc-mirror-{{ $.Values.name }}-{{ $.Values.version }}
   namespace: {{ $.Values.namespace }}
 spec:
@@ -23,6 +23,8 @@ spec:
             tar xvzf oc-mirror.tar.gz
             chmod +x oc-mirror
             ./oc-mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ $.Values.repository }}/{{ $.Values.key }}-{{ $.Values.name }}-{{ $.Values.version }} --dest-skip-tls=true
+            oc create -f oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml
+            oc create -f oc-mirror-workspace/results-*/catalogSource-redhat-operator-index.yaml
         volumeMounts:
         - name: imageset-config
           mountPath: /tmp/config
