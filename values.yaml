@@ -33,12 +33,12 @@ repositories:
         channel: stable
         version: v1.47.0
 
-  paas-oadp-v1.2.3:
+  paas-oadp-v1.1.7:
     catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
     packages:
       redhat-oadp-operator:
         channel: stable
-        version: v1.2.3
+        version: v1.1.7
 
 #  paas-gitops-v1.10.0:
 #    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
