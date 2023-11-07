@@ -7,7 +7,7 @@ repository: artifactory.apps.mirror.sandbox658.opentlc.com
 
 repositories:
 
-  paas-servicemesh-v2.2.3:
+  paas-servicemesh-v2-2-3:
     catalog: registry.redhat.io/redhat/redhat-operator-index:v4.10
     packages:
       servicemeshoperator:
@@ -20,7 +20,7 @@ repositories:
         channel: stable
         version: v1.36.0
 
-  paas-servicemesh-v2.4.4:
+  paas-servicemesh-v2-4-4:
     catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
     packages:
       servicemeshoperator:
@@ -33,7 +33,7 @@ repositories:
         channel: stable
         version: v1.47.0
 
-  paas-oadp-v1.2.3:
+  paas-oadp-v1-2-3:
     catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
     packages:
       redhat-oadp-operator:
