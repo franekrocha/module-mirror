@@ -20,18 +20,18 @@ repositories:
         channel: stable
         version: v1.36.0
 
-  paas-servicemesh-v2-4-4:
-    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
-    packages:
-      servicemeshoperator:
-        channel: stable
-        version: v2.4.4
-      kiali-ossm:
-        channel: stable
-        version: v1.65.9
-      jaeger-product:
-        channel: stable
-        version: v1.47.0
+#  paas-servicemesh-v2-4-4:
+#    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
+#    packages:
+#      servicemeshoperator:
+#        channel: stable
+#        version: v2.4.4
+#      kiali-ossm:
+#        channel: stable
+#        version: v1.65.9
+#      jaeger-product:
+#        channel: stable
+#        version: v1.47.0
 
 #  paas-oadp-v1-2-3:
 #    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
