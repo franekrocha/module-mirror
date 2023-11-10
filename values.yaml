@@ -7,7 +7,6 @@ repository: artifactory.apps.mirror.sandbox658.opentlc.com/caas-ocp4/olm-4.12/op
 catalogs:
 
   servicemesh-v2-2-3:
-    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
     packages:
       servicemeshoperator:
         channel: stable
@@ -28,7 +27,6 @@ catalogs:
 #        version: v1.2.3
 
 #  paas-servicemesh-v2-4-4:
-#    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
 #    packages:
 #      servicemeshoperator:
 #        channel: stable
@@ -43,7 +41,6 @@ catalogs:
 
 
 #  paas-gitops-v1.10.0:
-#    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
 #    packages:
 #      openshift-gitops-operator:
 #        channel: latest
