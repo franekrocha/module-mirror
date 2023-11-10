@@ -1,13 +1,12 @@
 namespace: paas-mirror
-
 image: registry.redhat.io/openshift4/ose-cli:v4.12
+catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
 ocMirror: https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.12.9/oc-mirror.tar.gz
+repository: artifactory.apps.mirror.sandbox658.opentlc.com/caas-ocp4/olm-4.12/operators
 
-repository: artifactory.apps.mirror.sandbox658.opentlc.com
+catalogs:
 
-repositories:
-
-  paas-servicemesh-v2-2-3:
+  servicemesh-v2-2-3:
     catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
     packages:
       servicemeshoperator:
@@ -21,7 +20,7 @@ repositories:
 #        channel: stable
 #        version: v1.36.0
 
-#  paas-oadp-v1-2-3:
+#  oadp-v1-2-3:
 #    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
 #    packages:
 #      redhat-oadp-operator:
