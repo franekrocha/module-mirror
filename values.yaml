@@ -16,7 +16,7 @@ catalogs:
         version: 1.48.3
       jaeger-product:
         channel: stable
-        version: 1.42.0-5
+        version: 1.47.1-5
 
 #  oadp-v1-2-3:
 #    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
