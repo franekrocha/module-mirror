@@ -2,7 +2,7 @@ namespace: paas-mirror
 image: registry.redhat.io/openshift4/ose-cli:v4.12
 catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
 ocMirror: https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.12.9/oc-mirror.tar.gz
-repository: artifactory.apps.mirror.sandbox658.opentlc.com/caas-ocp4/olm-4.12/extras/registry.redhat.io
+path: artifactory.apps.mirror.sandbox658.opentlc.com/caas-ocp4/olm-4.12/extras/registry.redhat.io
 
 catalogs:
 
