@@ -18,14 +18,19 @@ catalogs:
         channel: stable
         version: 1.47.1-5
 
+  servicemesh-v2-4-4:
+    packages:
+      servicemeshoperator:
+        channel: stable
+        version: 2.4.4-0
+
 #  oadp-v1-2-3:
-#    catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
 #    packages:
 #      redhat-oadp-operator:
 #        channel: stable-1.2
 #        version: v1.2.3
 
-#  paas-servicemesh-v2-4-4:
+#  servicemesh-v2-4-4:
 #    packages:
 #      servicemeshoperator:
 #        channel: stable
