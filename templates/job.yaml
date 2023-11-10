@@ -1,4 +1,4 @@
-{{- range $key, $val := $.Values.repositories }}
+{{- range $key, $val := $.Values.catalogs }}
 ---
 apiVersion: batch/v1
 kind: Job
@@ -24,11 +24,7 @@ spec:
             wget {{ $.Values.ocMirror }}
             tar xvzf oc-mirror.tar.gz
             chmod +x oc-mirror
-            ./oc-mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ $.Values.repository }}/{{ $key }} --dest-skip-tls=true
-            sed -i "s/name: operator-0/name: {{ $key }}/g" oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml
-            sed -i "s/name: redhat-operator-index/name: {{ $key }}/g" oc-mirror-workspace/results-*/catalogSource-redhat-operator-index.yaml
-            oc apply -f oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml
-            oc apply -f oc-mirror-workspace/results-*/catalogSource-redhat-operator-index.yaml
+            ./oc-mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ $.Values.repository }} --dest-skip-tls=true
         volumeMounts:
         - name: imageset-config
           mountPath: /tmp/config
