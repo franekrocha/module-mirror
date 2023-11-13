@@ -1,10 +1,11 @@
+{{- $wave := -26 }}
 {{- range $key, $val := $.Values.catalogs }}
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-26"
+    argocd.argoproj.io/sync-wave: "{{ $wave }}"
   name: oc-mirror-{{ $key }}
   namespace: {{ $.Values.namespace }}
 spec:
@@ -39,4 +40,5 @@ spec:
       - name: docker-config
         secret:
           secretName: pullsecret
+{{ $wave := $wave add 1 }}
 {{- end }}
