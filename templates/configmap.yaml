@@ -1,11 +1,10 @@
-{{- $wave := -27 }}
 {{- range $key, $val := $.Values.catalogs }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "{{ $wave }}"
+    argocd.argoproj.io/sync-wave: "-27"
   name: oc-mirror-{{ $key }}
   namespace: {{ $.Values.namespace }}
 data:
@@ -27,5 +26,4 @@ data:
             minVersion: {{ $values.version }}
             maxVersion: {{ $values.version }}
         {{- end }}
-{{ $wave := $wave add 1 }}
 {{- end }}
