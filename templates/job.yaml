@@ -12,7 +12,7 @@ spec:
     spec:
       serviceAccountName: oc-mirror
       containers:
-      - name: ose-cli
+      - name: container
         image: {{ $.Values.image }}
         securityContext:
           runAsUser: 0
