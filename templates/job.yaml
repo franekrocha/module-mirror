@@ -10,6 +10,7 @@ metadata:
 spec:
   template:
     spec:
+      serviceAccountName: oc-mirror
       containers:
       - name: container
         image: {{ $.Values.image }}
@@ -19,6 +20,7 @@ spec:
           - "/bin/sh"
           - "-c"
           - |
+            cd /root
             wget {{ $.Values.ocMirror }}
             tar xvzf oc-mirror.tar.gz
             chmod +x oc-mirror
