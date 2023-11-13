@@ -40,5 +40,5 @@ spec:
       - name: docker-config
         secret:
           secretName: pullsecret
-{{ $wave := $wave add 1 }}
+{{- $wave = add $wave 1 }}
 {{- end }}
