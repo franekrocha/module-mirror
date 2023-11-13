@@ -13,7 +13,7 @@ data:
     apiVersion: mirror.openshift.io/v1alpha2
     storageConfig:
       registry:
-        imageURL: "{{ $.Values.repository }}/metadata"
+        imageURL: "{{ $.Values.path }}/metadata"
         skipTLS: true
     mirror:
       operators:
