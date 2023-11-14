@@ -23,6 +23,9 @@ catalogs:
       servicemeshoperator:
         channel: stable
         version: 2.4.4-0
+      jaeger-product:
+        channel: stable
+        version: 1.47.1-5
 
 #  oadp-v1-2-3:
 #    packages:
