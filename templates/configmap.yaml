@@ -11,10 +11,6 @@ data:
   imagesetconfiguration.yaml: |
     kind: ImageSetConfiguration
     apiVersion: mirror.openshift.io/v1alpha2
-    storageConfig:
-      registry:
-        imageURL: "{{ $.Values.path }}/registry.redhat.io/metadata"
-        skipTLS: true
     mirror:
       operators:
       - catalog: "{{ $.Values.catalog }}"
