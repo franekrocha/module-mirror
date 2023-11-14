@@ -27,11 +27,11 @@ catalogs:
         channel: stable
         version: 1.47.1-5
 
-#  oadp-v1-2-3:
-#    packages:
-#      redhat-oadp-operator:
-#        channel: stable-1.2
-#        version: v1.2.3
+  oadp-v1-2-2:
+    packages:
+      redhat-oadp-operator:
+        channel: stable-1.2
+        version: 1.2.2
 
 #  servicemesh-v2-4-4:
 #    packages:
