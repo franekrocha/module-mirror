@@ -20,10 +20,6 @@ spec:
           - "/bin/sh"
           - "-c"
           - |
-            cd /root
-            curl {{ $.Values.ocMirror }} --output oc-mirror.tar.gz
-            tar xvzf oc-mirror.tar.gz
-            chmod +x oc-mirror
             ./oc-mirror --config=/tmp/config/imagesetconfiguration.yaml docker://{{ $.Values.path }}/registry.redhat.io --dest-skip-tls=true
             skopeo copy docker://{{ $.Values.path }}/{{ $.Values.catalog }} docker://{{ $.Values.path }}/registry.redhat.io/redhat/{{ $key }}:latest --tls-verify=false
         volumeMounts:
